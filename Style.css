@@ -54,15 +54,15 @@ main{
 
 
 .hero{
-    text-align:center;
-    padding:80px 20px;
+    text-align:center ;
+    padding: 30px;
     background:#FAF3ED;
 }
 
 
 .section{
     padding:60px 20px;
-    text-align:center;
+    text-align:right;
 }
 
 
@@ -211,8 +211,8 @@ background-color: #A96F43;
 
 .about-content{
     max-width:800px;
-    margin:auto;
-    text-align:right;
+    margin:30px ;
+   padding: 20px;
 }
 
 .goals{
@@ -241,6 +241,15 @@ background-color: #A96F43;
     transform: translateY(-5px);
     box-shadow: 0 12px 25px rgba(0,0,0,0.3);
 }
+.about {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
 
-/* test */
-/* test 2 */
+@media (min-width: 1024px) {
+    .about {
+        flex-direction: row;
+    }
+}
+
