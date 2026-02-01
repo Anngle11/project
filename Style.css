@@ -55,7 +55,8 @@ main{
 
 .hero{
     text-align:center ;
-    padding: 30px;
+    padding: 60px 20px;
+    margin: 0 auto;
     background:#FAF3ED;
 }
 
