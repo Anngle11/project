@@ -5,7 +5,6 @@
     <title>Saudi Quiz</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style.css">
-
 </head>
 <body>
 
@@ -15,18 +14,18 @@
     </div>
     <nav>
         <a href="MainPage.html">الرئيسية</a>
-         <a href="About.html">من نحن</a>
-          <a href="Services.html">خدماتنا</a>
+        <a href="About.html">من نحن</a>
+        <a href="Services.html">خدماتنا</a>
         <a href="Contact.html">تواصل</a>
     </nav>
 </header>
 
 <main>
 
-<section id="quiz2" class="page quiz active">
-    <h2>أي مدينة تعد أقدس مدينة في الأسلام؟</h2>
+<section id="quiz4" class="page quiz active">
+    <h2>أي مدينة تعد أقدس مدينة في الإسلام؟</h2>
     <div class="options">
-        <a href="#correct">مكة</a>
+        <a href="MainPage.html">مكة</a>
         <a href="#wrong">المدينة المنورة</a>
         <a href="#wrong">الطائف</a>
     </div>
@@ -38,11 +37,10 @@
     <p>© 2026 Saudi Quiz</p>
 </footer>
 
-
 <div id="wrong" class="popup">
     <div class="popup-box">
         <h3>❌ إجابة خاطئة</h3>
-        <a href="#quiz1" class="close">إغلاق</a>
+        <a href="#quiz4" class="close">إغلاق</a>
     </div>
 </div>
 
@@ -52,6 +50,41 @@
         <a href="MainPage.html" class="close">الرئيسية</a>
     </div>
 </div>
+
+<!-- == JavaScript == -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    const options = document.querySelectorAll("#quiz4 .options a");
+    const correctPopup = document.getElementById("correct");
+    const wrongPopup = document.getElementById("wrong");
+
+    options.forEach(option => {
+        option.addEventListener("click", function(e){
+            // تحقق من الرابط الصحيح
+            if(option.getAttribute("href") === "MainPage.html") {
+                e.preventDefault();
+                correctPopup.style.display = "flex";
+                setTimeout(() => {
+                    window.location.href = "MainPage.html";
+                }, 1000); // تأخير قبل العودة للصفحة الرئيسية
+            } else {
+                e.preventDefault();
+                wrongPopup.style.display = "flex";
+            }
+        });
+    });
+
+    // زر إغلاق popup
+    document.querySelectorAll(".popup .close").forEach(btn => {
+        btn.addEventListener("click", function(e){
+            e.preventDefault();
+            this.closest(".popup").style.display = "none";
+        });
+    });
+
+});
+</script>
 
 </body>
 </html>

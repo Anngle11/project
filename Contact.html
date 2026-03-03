@@ -10,47 +10,95 @@
 
 <header class="navbar">
     <div class="logo">
-
         <img src="img-ved/camel.JPG"/>
-
     </div>
     <nav>
-
         <a href="MainPage.html">الرئيسية</a>
-         <a href="About.html">من نحن</a>
-         <a href="Services.html">خدماتنا</a>
+        <a href="About.html">من نحن</a>
+        <a href="Services.html">خدماتنا</a>
         <a href="contact.html">تواصل</a>
-
     </nav>
 </header>
 
 <main>
+    <section class="section">
+        <h1>تواصل معنا</h1>
 
-<section class="section">
-    <h1>تواصل معنا</h1>
+        <form id="contactForm" class="contact-form">
+            <label for="name">الاسم</label>
+            <input id="name" type="text" placeholder="اسمك">
 
-    <form class="contact-form">
-        <label for="name">الاسم</label>
-        <input id="name" type="text" placeholder="اسمك">
+            <label for="email">البريد الإلكتروني</label>
+            <input id="email" type="email" placeholder="example@email.com">
 
-        <label for="email">البريد الإلكتروني</label>
-        <input id="email" type="email" placeholder="example@email.com">
+            <label for="message">الرسالة</label>
+            <textarea id="message" rows="4"></textarea>
 
-        <label for="message">الرسالة</label>
-        <textarea id="message" rows="4"></textarea>
-
-        <button class="btn" type="submit">إرسال</button>
-        
-    </form>
-</section>
-
+            <button class="btn" type="submit">إرسال</button>
+            <div id="formMessage"></div>
+        </form>
+    </section>
 </main>
 
 <footer class="footer">
-
     <p>© 2026 Saudi Quiz</p>
-    
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+    const form = document.getElementById("contactForm");
+    const messageDiv = document.getElementById("formMessage");
+
+    form.addEventListener("submit", function(e){
+        e.preventDefault();
+
+        const nameInput = document.getElementById("name");
+        const emailInput = document.getElementById("email");
+        const messageInput = document.getElementById("message");
+
+        const name = nameInput.value.trim();
+        const email = emailInput.value.trim();
+        const message = messageInput.value.trim();
+
+        messageDiv.innerHTML = "";
+        messageDiv.style.opacity = 1;
+
+        //  التحقق من الحقول الفارغة
+        if(name === "" || email === "" || message === ""){
+            messageDiv.textContent = "يرجى تعبئة جميع الحقول ❌";
+            messageDiv.style.color = "red";
+            return;
+        }
+
+        //  تحقق بسيط من صحة الإيميل
+        if(!email.includes("@") || !email.includes(".")){
+            messageDiv.textContent = "البريد الإلكتروني غير صحيح ❌";
+            messageDiv.style.color = "red";
+            return;
+        }
+
+        //  إنشاء عنصر جديد ديناميكيًا (DOM Manipulation)
+        const successBox = document.createElement("div");
+        successBox.textContent = "تم الإرسال بنجاح ✅ شكراً لك " + name;
+        successBox.style.color = "green";
+        successBox.style.marginTop = "10px";
+
+        messageDiv.appendChild(successBox);
+
+        form.reset();
+
+        //  إخفاء الرسالة بعد ثانيتين
+        setTimeout(()=>{
+            messageDiv.style.opacity = 0;
+            messageDiv.innerHTML = "";
+        }, 2500);
+
+    });
+
+});
+</script>
 
 </body>
 </html>
+

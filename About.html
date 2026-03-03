@@ -5,15 +5,35 @@
     <title>من نحن</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style.css">
+    <style>
+        .about-content h2, 
+        .about-content p, 
+        .about-content ul li {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.8s ease;
+        }
+
+        .about-content h2:hover {
+            color: #D48B54;
+            cursor: pointer;
+        }
+
+        .highlight {
+            background: #fff3e8;
+            padding: 10px;
+            border-radius: 8px;
+            margin-top: 10px;
+        }
+    </style>
 </head>
 <body>
-
 
 <header class="navbar">
     <div class="logo">
         <img src="img-ved/camel.JPG"/>
     </div>
-    <nav aria-label="القائمة الرئيسية">
+    <nav>
         <a href="MainPage.html">الرئيسية</a>
         <a href="About.html">من نحن</a>
         <a href="Services.html">خدماتنا</a>
@@ -23,51 +43,84 @@
 
 <main class="about">
 
-
 <section class="hero">
-    
-    <h1>من نحن</h1>
+    <h1 id="aboutTitle">من نحن</h1>
     <p>تعرف على السعودية وثقافتها</p>
-   
 </section>
-
 
 <section class="section about-content">
     <h2>قصتنا</h2>
-
     <p>
        بدأت فكرة Saudi Quiz من حبنا للمملكة العربية السعودية ورغبتنا في تقديم محتوى ممتع يعرّف
-         الناس بثقافتنا وتاريخنا بطريقة مختلفة.
-         لاحظنا إن كثير من المعلومات تُقدَّم بشكل تقليدي،  
-         فقررنا نحولها إلى لعبة أسئلة تفاعلية تجمع بين المتعة والتعلم، وتجعل المعرفة تجربة حلوة وسهلة للجميع.
+       الناس بثقافتنا وتاريخنا بطريقة مختلفة.
     </p>
 
     <h2>رؤيتنا</h2>
-
     <p>
-       نسعى لأن يكون Saudi Quiz منصة تفاعلية رائدة في تقديم المعرفة عن السعودية بأسلوب ممتع، حديث، ومناسب لجميع الأعمار، 
-       ونكون الخيار الأول لكل شخص يحب يتعلم عن وطنه بطريقة غير مملة
+       نسعى لأن يكون Saudi Quiz منصة تفاعلية رائدة في تقديم المعرفة عن السعودية بأسلوب ممتع وحديث.
     </p>
 
     <h2>أهدافنا</h2>
     <ul class="goals">
-
         <li> نشر المعرفة عن المملكة العربية السعودية</li>
         <li> تعزيز الثقافة والانتماء الوطني</li>
         <li> تقديم التعلم بأسلوب ممتع وتفاعلي</li>
         <li> تبسيط المعلومات التاريخية والثقافية</li>
-
     </ul>
+
+    <!-- زر تفاعلي -->
+    <button class="btn" id="moreBtn">اعرف أكثر</button>
+
+    <!-- مكان لإضافة محتوى ديناميكي -->
+    <div id="extraContent"></div>
+
 </section>
 
 </main>
 
-
 <footer class="footer">
-
     <p>© 2026 Saudi Quiz.</p>
-    
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+
+    //  ظهور العناصر تدريجيًا
+    const elements = document.querySelectorAll('.about-content h2, .about-content p, .about-content ul li');
+
+    elements.forEach((el, index) => {
+        setTimeout(() => {
+            el.style.opacity = 1;
+            el.style.transform = "translateY(0)";
+        }, index * 200);
+    });
+
+    //  حدث عند الضغط على زر "اعرف أكثر"
+    const moreBtn = document.getElementById("moreBtn");
+    const extraContent = document.getElementById("extraContent");
+
+    moreBtn.addEventListener("click", function(){
+
+        // لو المحتوى موجود نحذفه (DOM remove)
+        if(extraContent.innerHTML !== ""){
+            extraContent.innerHTML = "";
+            moreBtn.textContent = "اعرف أكثر";
+            return;
+        }
+
+        //  إنشاء عنصر جديد ديناميكيًا
+        const newBox = document.createElement("div");
+        newBox.classList.add("highlight");
+        newBox.textContent = "نؤمن أن المعرفة قوة، وهدفنا نشر الثقافة بأسلوب حديث وممتع يناسب الجميع 🇸🇦";
+
+        extraContent.appendChild(newBox);
+
+        // تحديث محتوى الزر ديناميكيًا
+        moreBtn.textContent = "إخفاء";
+    });
+
+});
+</script>
 
 </body>
 </html>

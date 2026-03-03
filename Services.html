@@ -2,10 +2,22 @@
 <html lang="ar">
 <head>
     <meta charset="UTF-8">
-    <title>الرئيسية</title>
+    <title>خدماتنا</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="Style.css">
-
+    <style>
+        /* تأثير ظهور تدريجي للبطاقات */
+        .card {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 0.6s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
@@ -13,68 +25,73 @@
     <div class="logo">
         <img src="img-ved/camel.JPG"/>
     </div>
-
     <nav>
-
         <a href="MainPage.html">الرئيسية</a>
-         <a href="About.html">من نحن</a>
-         <a href="Services.html">خدماتنا</a>
+        <a href="About.html">من نحن</a>
+        <a href="Services.html">خدماتنا</a>
         <a href="contact.html">تواصل</a>
-
     </nav>
 </header>
 
 <section class="hero">
-        <h1>خدماتنا</h1>
-        <p>نقدّم تجربة تعليمية ترفيهية لاختبار معلوماتك عن المملكة العربية السعودية</p>
-    </section>
+    <h1>خدماتنا</h1>
+    <p>نقدّم تجربة تعليمية ترفيهية لاختبار معلوماتك عن المملكة العربية السعودية</p>
+</section>
 
-   
-    <section class="section">
-        <div class="cards">
-
-            <div class="card">
-                <h3> أسئلة ثقافية</h3>
-                <p>
-                    مجموعة من الأسئلة المتنوعة عن تاريخ المملكة،
-                    المدن، المعالم، والمناسبات الوطنية.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3> لعبة تفاعلية</h3>
-                <p>
-                    تجربة لعب سهلة وممتعة، مع الانتقال بين
-                    الأسئلة ومعرفة الإجابة الصحيحة أو الخاطئة.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3> تصميم متجاوب</h3>
-                <p>
-                    الموقع يعمل على الجوال، التابلت،
-                    وأجهزة الكمبيوتر بكل سلاسة.
-                </p>
-            </div>
-
-            <div class="card">
-                <h3> تعليم وترفيه</h3>
-                <p>
-                    نهدف إلى دمج التعلم مع الترفيه
-                    لتقديم تجربة ممتعة لجميع الأعمار.
-                </p>
-            </div>
-
+<section class="section">
+    <div class="cards">
+        <div class="card">
+            <h3> أسئلة ثقافية</h3>
+            <p>
+                مجموعة من الأسئلة المتنوعة عن تاريخ المملكة،
+                المدن، المعالم، والمناسبات الوطنية.
+            </p>
         </div>
-    </section>
 
-</main>
+        <div class="card">
+            <h3> لعبة تفاعلية</h3>
+            <p>
+                تجربة لعب سهلة وممتعة، مع الانتقال بين
+                الأسئلة ومعرفة الإجابة الصحيحة أو الخاطئة.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3> تصميم متجاوب</h3>
+            <p>
+                يتم تصميم الموقع بحيث يعمل بشكل ممتاز على جميع الأجهزة،
+                سواء الجوال، التابلت، أو الكمبيوتر، مع تجربة مستخدم سلسة وسهلة
+                لتصفح الأسئلة والإجابات بدون مشاكل.
+            </p>
+        </div>
+
+        <div class="card">
+            <h3> تعليم وترفيه</h3>
+            <p>
+                نهدف إلى دمج التعليم مع المتعة، حيث يمكن للمستخدم التعلم عن
+                المملكة العربية السعودية بطريقة تفاعلية ومسلية، لتصبح تجربة
+                اللعب ممتعة لجميع الأعمار.
+            </p>
+        </div>
+    </div>
+</section>
 
 <footer class="footer">
-
     <p>© 2026 Saudi Quiz</p>
-     
 </footer>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    const cards = document.querySelectorAll('.card');
+
+    cards.forEach((card, index) => {
+        setTimeout(() => {
+            card.style.opacity = 1;
+            card.style.transform = "translateY(0)";
+        }, index * 200); // كل بطاقة تظهر بعد 0.2 ثانية من التي قبلها
+    });
+});
+</script>
 
 </body>
 </html>
